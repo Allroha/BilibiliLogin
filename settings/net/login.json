@@ -2,7 +2,6 @@
   "trust_env": false,
   "proxies": null,
   "timeout": 5,
-  "host": "passport.bilibili.com",
   "user_agent": "Mozilla/5.0 BiliDroid/{NAME} (bbcallen@gmail.com) os/android model/{MODEL} mobi_app/android build/{CODE} channel/{CHANNEL} innerVer/{CODE} osVer/{OSVER} network/2",
   "channel": "alifenfa",
   "headers": {
