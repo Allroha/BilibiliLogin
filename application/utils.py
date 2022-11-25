@@ -2,7 +2,7 @@ import hashlib
 import base64
 import json
 import uuid
-import time
+import rsa
 import os
 
 from urllib.parse import urlencode
@@ -63,3 +63,10 @@ def sortedFormData(form_data: dict):
         return_form_data[key] = form_data[key]
     return return_form_data
 
+
+def rsaPassport(passport: str, rsa_key: str, rsa_hash: str):
+    """ rsa密码加密 """
+    pub_key = rsa.PublicKey.load_pkcs1_openssl_pem(rsa_key.encode())
+    rsa_passport = str(rsa_hash + passport).encode()
+    encrypted_passport = rsa.encrypt(rsa_passport, pub_key)
+    return base64.b64encode(encrypted_passport).decode()
