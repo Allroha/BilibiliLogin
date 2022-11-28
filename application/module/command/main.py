@@ -24,6 +24,9 @@ def sms_login(master) -> None:
     versions = (device["VersionName"], device["VersionCode"])
     system = (device["AndroidModel"], device["AndroidBuild"])
 
+    print(device)
+    print(device["Buvid"])
+
     SmsLoginWindow(versions, system, device["Buvid"])
 
 
