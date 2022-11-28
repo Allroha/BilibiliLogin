@@ -1,6 +1,8 @@
 # bili-login
 
-短信登陆+账密登陆
+b站登陆模拟
+
+获取accessKey and cookie
 
 **参考：**
 
