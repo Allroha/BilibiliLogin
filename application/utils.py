@@ -116,9 +116,9 @@ def parse_cookies(cookies_content: str) -> dict:
     return {i[0]: i[1] for i in c2}
 
 
-def rsaPassport(passport: str, rsa_key: str, rsa_hash: str):
+def rsaPassword(password: str, rsa_key: str, rsa_hash: str):
     """ rsa密码加密 """
     pub_key = rsa.PublicKey.load_pkcs1_openssl_pem(rsa_key.encode())
-    rsa_passport = str(rsa_hash + passport).encode()
-    encrypted_passport = rsa.encrypt(rsa_passport, pub_key)
-    return base64.b64encode(encrypted_passport).decode()
+    rsa_password = str(rsa_hash + password).encode()
+    encrypted_password = rsa.encrypt(rsa_password, pub_key)
+    return base64.b64encode(encrypted_password).decode()

@@ -20,7 +20,7 @@ from geetest.geetest import GeeTest
 
 @application_thread
 @application_error
-def send_verify_code(master) -> None:
+def sms_send_verify_code(master) -> None:
     tel_number = master["tel_number_entry"].value("未输入手机号")
     tel_number = tel_number.replace(" ", "")
     if not tel_number.isdigit():
@@ -73,7 +73,7 @@ def send_verify_code(master) -> None:
 
 @application_thread
 @application_error
-def login_login(master):
+def sms_login_login(master):
     if not master.captcha_key:
         showinfo("提示", "未成功发送验证码")
         return

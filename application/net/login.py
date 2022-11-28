@@ -1,7 +1,7 @@
 from application.net.session import Session
 
 from application.utils import (
-    LOGIN_SIGN, sortedFormData, addSign, rsaPassport
+    LOGIN_SIGN, sortedFormData, addSign, rsaPassword
 )
 
 from application.module.decoration import application_error
@@ -72,10 +72,10 @@ class SmsLogin(Session):
         return response
 
 
-class PassportLogin(Session):
+class PasswordLogin(Session):
     @application_error
     def __init__(self, versions: T1, system: T1, buvid: str):
-        super(PassportLogin, self).__init__(**login_config)
+        super(PasswordLogin, self).__init__(**login_config)
 
         __statistics = '{"appId":1,"platform":3,"version":"__ver__","abtest":""}'
 
@@ -119,7 +119,7 @@ class PassportLogin(Session):
             "device": "phone", "device_name": self.model,
             "disable_rcmd": "0", "local_id": self.buvid,
             "mobi_app": "android", "platform": "android",
-            "password": rsaPassport(passport, key, rhash),
+            "password": rsaPassword(passport, key, rhash),
             "device_platform": device_platform,
             "statistics": self.statistics,
             "ts": round(time.time()),
@@ -213,12 +213,3 @@ class PassportLogin(Session):
         url = "https://passport.bilibili.com/x/passport-login/oauth2/access_token"
         response = self.request("POST", url, data=form_data)
         return response
-
-    @application_error
-    def extractCookie(self, response_json: dict) -> tuple[str, str]:
-        access_key = str(response_json["data"]["token_info"]["access_token"])
-        cookie_list = response_json["data"]["cookie_info"]["cookies"]
-        cookie_dict = {li["name"]: li["value"] for li in cookie_list}
-        cookie_dict.update({"Buvid": str(self.buvid)})
-        cookie_list = [f"{k}={v}" for k, v in cookie_dict.items()]
-        return access_key, "; ".join(cookie_list)

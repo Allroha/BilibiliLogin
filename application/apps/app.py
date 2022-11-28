@@ -6,7 +6,7 @@ from application.config import main_button_settings
 from application.module.controls import TkinterButton
 
 from application.module.command.main import (
-    setting_device, sms_login, passwort_login
+    setting_device, sms_login, password_login
 )
 
 from functools import partial
@@ -16,7 +16,7 @@ import os
 
 main_func_list = [
     ("sms_login", sms_login),
-    ("passport_login", passwort_login),
+    ("password_login", password_login),
     ("setting_device", setting_device)
 ]
 

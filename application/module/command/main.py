@@ -7,7 +7,7 @@ from application.apps.windows.setting import SettingDeviceWindow
 from application.utils import get_all_value
 
 from application.apps.windows.login import (
-    SmsLoginWindow, PassportLoginWindow
+    SmsLoginWindow, PasswordLoginWindow
 )
 
 
@@ -29,5 +29,9 @@ def sms_login(master) -> None:
 
 @application_thread
 @application_error
-def passwort_login(master) -> None:
-    PassportLoginWindow(master)
+def password_login(master) -> None:
+    device = get_all_value(master, "Device_", [])
+    versions = (device["VersionName"], device["VersionCode"])
+    system = (device["AndroidModel"], device["AndroidBuild"])
+
+    PasswordLoginWindow(versions, system, device["Buvid"])

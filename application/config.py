@@ -9,6 +9,16 @@ setting_label_settings = reader("./settings/controls/setting/label.json")
 setting_entry_settings = reader("./settings/controls/setting/entry.json")
 setting_button_settings = reader("./settings/controls/setting/button.json")
 
-sms_login_entry_settings = reader("./settings/controls/sms_login/entry.json")
 sms_login_label_settings = reader("./settings/controls/sms_login/label.json")
+sms_login_entry_settings = reader("./settings/controls/sms_login/entry.json")
 sms_login_button_settings = reader("./settings/controls/sms_login/button.json")
+
+
+password_login_label_settings = reader("./settings/controls/password_login/label.json")
+password_login_entry_settings = reader("./settings/controls/password_login/entry.json")
+password_login_button_settings = reader("./settings/controls/password_login/button.json")
+
+
+password_verify_label_settings = reader("./settings/controls/password_verify/label.json")
+password_verify_entry_settings = reader("./settings/controls/password_verify/entry.json")
+password_verify_button_settings = reader("./settings/controls/password_verify/button.json")
